@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+{{ title }}
+{% endblock %}
+
+{% block header %}
+<h1>Articles</h1>
+<a class="btn btn-success" style="align-self: center;" href="{% url 'create' %}">New</a>
+{% endblock %}
+
+{% block content %}
+  {% if articles %}
+    {% for element in articles %}
+      <div class="alert alert-warning mt-2">
+        <h3><a class="nav-link px-0 link-dark" href="{% url 'detail' element.id %}">{{ element.title }}</a></h3>
+        <p>{{ element.text }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+      <h4>No articles</h4>
+  {% endif %}
+{% endblock %}
